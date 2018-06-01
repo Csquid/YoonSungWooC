@@ -24,7 +24,8 @@ class PermanentWorker: public Employee
 private:
     int salary;
 public:
-    PermanentWorker(const char* name, int money) : Employee(name), salary(money)
+    PermanentWorker(const char* name, int money) : 
+        Employee(name), salary(money)
     { }
     int GetPay() const
     {
@@ -40,11 +41,12 @@ public:
 class SalesWorker : public PermanentWorker
 {
 private:
-    int salesResult;
+    int    salesResult;
     double bonusRatio;
 public:
     SalesWorker(const char* name, int money, double ratio)
-        : PermanentWorker(name, money), salesResult(0), bonusRatio(ratio)
+        : PermanentWorker(name, money), 
+          salesResult(0), bonusRatio(ratio)
     { }
     void AddSalesResult(int value)
     {
@@ -67,7 +69,8 @@ private:
     int workTime;
     int payPerHour;
 public:
-    TemporaryWorker(const char* name, int pay): Employee(name), workTime(0), payPerHour(pay)
+    TemporaryWorker(const char* name, int pay): 
+        Employee(name), workTime(0), payPerHour(pay)
     { }
     void AddWorkTime(int time)
     {
@@ -80,7 +83,8 @@ public:
     void ShowSalaryInfo() const
     {
         ShowYourName();
-        std::cout << "salary: " << GetPay() << std::endl << std::endl;
+        std::cout << "salary: " << GetPay() << 
+            std::endl << std::endl;
     }
 };
 
