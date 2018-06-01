@@ -50,12 +50,10 @@ public:
     {
         salesResult += value;
     }
-    @override
     int GetPay() const
     {
         return PermanentWorker::GetPay() + (int)(salesResult * bonusRatio);
     }
-    @override
     void ShowSalaryInfo() const
     {
         ShowYourName();
