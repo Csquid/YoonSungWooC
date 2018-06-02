@@ -106,9 +106,9 @@ public:
     virtual void ShowSalaryInfo() const
     {
         ShowYourName();
-        std::cout << "salary: " <<  GetPay() << std::endl;
+        std::cout << "salary: "  <<  GetPay()    << std::endl;
         std::cout << "risk Pay:" << GetRiskPay() << std::endl;
-        std::cout << "sum: " << GetSumPay() << std::endl << std::endl;
+        std::cout << "sum: "     << GetSumPay()  << std::endl << std::endl;
     }
 };
 
