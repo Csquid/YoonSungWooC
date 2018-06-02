@@ -29,11 +29,11 @@ public:
     PermanentWorker(const char* name, int money) : 
         Employee(name), salary(money)
     { }
-    int GetPay() const
+    virtual int GetPay() const
     {
         return salary;
     }
-    void ShowSalaryInfo() const
+    virtual void ShowSalaryInfo() const
     {
         ShowYourName();
         std::cout << "salary: " << GetPay() << std::endl << std::endl;
@@ -47,21 +47,68 @@ private:
     double bonusRatio;
 public:
     SalesWorker(const char* name, int money, double ratio)
-        : PermanentWorker(name, money), 
-          salesResult(0), bonusRatio(ratio)
+        : PermanentWorker(name, money), salesResult(0), bonusRatio(ratio)
     { }
-    void AddSalesResult(int value)
+    virtual void AddSalesResult(int value)
     {
         salesResult += value;
     }
-    int GetPay() const
+    virtual int GetPay() const
     {
         return PermanentWorker::GetPay() + (int)(salesResult * bonusRatio);
     }
-    void ShowSalaryInfo() const
+    virtual void ShowSalaryInfo() const
     {
         ShowYourName();
         std::cout << "salary: " << GetPay() << std::endl << std::endl;
+    }
+};
+
+enum class RISK_LEVEL
+{
+    RISK_A = 30,
+    RISK_B = 20,
+    RISK_C = 10,
+};
+
+class ForeignSaleWorker : public PermanentWorker
+{
+private:
+    double bonusRatio;
+    int salesResult;
+    int bonusPay;
+    int rishPay;
+    int sumPay;
+    RISK_LEVEL Risk;
+public:
+    ForeignSaleWorker(const char* name, int money, double ratio, RISK_LEVEL risk_pay)
+        : PermanentWorker(name, money), Risk(risk_pay), bonusRatio(ratio), salesResult(0)
+    { }
+    virtual void AddSalesResult(int value)
+    {
+        salesResult += value;
+        bonusPay    = PermanentWorker::GetPay() + (int)(salesResult * bonusRatio);
+        rishPay     = (bonusPay * (int)Risk) / 100;
+        sumPay      = bonusPay + rishPay;
+    }
+    virtual int GetPay() const
+    {
+        return bonusPay;
+    }
+    int GetRiskPay() const
+    {
+        return rishPay;
+    }
+    int GetSumPay() const
+    {
+        return sumPay;
+    } 
+    virtual void ShowSalaryInfo() const
+    {
+        ShowYourName();
+        std::cout << "salary: " <<  GetPay() << std::endl;
+        std::cout << "risk Pay:" << GetRiskPay() << std::endl;
+        std::cout << "sum: " << GetSumPay() << std::endl << std::endl;
     }
 };
 
@@ -74,19 +121,18 @@ public:
     TemporaryWorker(const char* name, int pay): 
         Employee(name), workTime(0), payPerHour(pay)
     { }
-    void AddWorkTime(int time)
+    virtual void AddWorkTime(int time)
     {
         workTime += time;
     }
-    int GetPay() const
+    virtual int GetPay() const
     {
         return workTime * payPerHour;
     }
-    void ShowSalaryInfo() const
+    virtual void ShowSalaryInfo() const
     {
         ShowYourName();
-        std::cout << "salary: " << GetPay() << 
-            std::endl << std::endl;
+        std::cout << "salary: " << GetPay() << std::endl << std::endl;
     }
 };
 
