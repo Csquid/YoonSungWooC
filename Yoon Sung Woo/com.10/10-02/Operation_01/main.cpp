@@ -12,6 +12,7 @@ int main()
 
     ++(++pos);
     pos.ShowPosition();
+
     --(--pos);
     pos.ShowPosition();
 }
