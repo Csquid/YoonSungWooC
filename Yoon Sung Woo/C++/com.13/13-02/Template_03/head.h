@@ -5,20 +5,49 @@
 #include <cstdlib>
 
 template <class T>
-class BounsCheckArray
+class BoundCheckArray
 {
 private:
     T*  arr;
     int arrlen;
 
-    BounsCheckArray(const BounsCheckArray& arr) { }
-    BonusCheckArray& operator=(const BounsCheckArray& arr) { }
+    BoundCheckArray(const BoundCheckArray& arr) { }
+    BoundCheckArray& operator=(const BoundCheckArray& arr) { }
 public:
-    BounsCheckArray(int len);
+    BoundCheckArray(int len);
     T& operator[] (int idx);
     T operator (int idx) const;
     int GetArrLen() const;
-    ~BounsCheckArray();
+    ~BoundCheckArray();
 };
+
+template <class T>
+BoundCheckArray<T>::BoundCheckArray(int len) : arrlen(len)
+{
+    arr = new T[len];
+}
+
+template <class T>
+T& BoundCheckArray<T>::operator[] (int idx)
+{
+    if(idx < 0 || idx >= arrlen)
+    {
+        std::cout << "index error" << std::endl;
+        exit(1);
+    }
+    return arr[idx];
+}
+
+template <class T>
+T BoundCheckArray<T>::operator[] (int idx) const
+{
+    if(idx < 0 || idx >= arrlen)
+    {
+        std::cout << "index error" << std::endl;
+        exit(1);
+    }
+    return arr[idx];
+}
+
 
 #endif

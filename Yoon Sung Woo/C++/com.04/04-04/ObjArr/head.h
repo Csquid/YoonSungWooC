@@ -10,13 +10,12 @@ private:
     char* name;
     int   age;
 public:
-    Person(const char* myName, int myAge)
+    Person(const char* myName, int myAge) : age(myAge)
     {
         int len = strlen(myName) + 1;
 
         this->name = new char[len];
         strcpy(this->name, myName);
-        this->age  = myAge;
     }
     Person()
     {
