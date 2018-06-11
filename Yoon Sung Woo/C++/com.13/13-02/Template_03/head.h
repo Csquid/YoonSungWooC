@@ -16,7 +16,7 @@ private:
 public:
     BoundCheckArray(int len);
     T& operator[] (int idx);
-    T operator (int idx) const;
+    T operator[] (int idx) const;
     int GetArrLen() const;
     ~BoundCheckArray();
 };
