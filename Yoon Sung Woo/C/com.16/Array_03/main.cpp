@@ -16,7 +16,6 @@ int main()
             scanf ("%d", &villa[i][j]);
         }
     }
-
     for(int i = 0; i < FLOOR; i++)
     {
         for(int j = 0; j < HO; j++)
@@ -29,7 +28,14 @@ int main()
     return 0;
 }
 
-void InsertData(int* nArr)
-{
-
-}
+// void InsertData(int* nArr)
+// {
+//     for(int i = 0; i < FLOOR; i++)
+//     {
+//         for(int j = 0; j < HO; j++)
+//         {
+//             printf("%d - %d People Number: ", i + 1, j + 1);
+//             scanf ("%d", &nArr[i][j]);
+//         }
+//     }
+// }
