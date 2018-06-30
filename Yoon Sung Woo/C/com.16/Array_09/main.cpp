@@ -9,7 +9,7 @@ int main()
     };
 
     int arrLen[3] = { 0 };
-
+            
     for(int i = 0; i < 3; i++)
     {
         printf("Array iArr[%d] size: %ld \n", i, sizeof(iArr[i]));
