@@ -6,7 +6,7 @@ void SimpleAdder(int n1, int n2)
 }
 
 void ShowString(const char* str)
-{
+{ 
     printf("%s \n", str);
 }
 
@@ -26,6 +26,12 @@ int main()
     printf("fptr2 address: %p \n\n", fptr2);
 
     printf("SimpleAdder address: %p \n", SimpleAdder);
-    printf("ShowString address: %p", ShowString);
+    printf("ShowString address: %p \n\n", ShowString);
+
+    if(fptr1 == SimpleAdder)
+    {
+        printf("fptr1 == SimpleAdder \n");
+    }
+
     return 0;
 }
